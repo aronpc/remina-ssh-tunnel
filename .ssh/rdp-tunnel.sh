@@ -2,7 +2,7 @@
 
 scriptname="$(basename $0)"
 actionname="$1"
-tunnelname="$2"
+tunnelname=$(echo "$2" | iconv -t ascii//TRANSLIT | sed -E 's/[^a-zA-Z0-9-]+/-/g' | sed -E 's/^-+|-+$//g' | tr A-Z a-z)
 remotedata="$3"
 tunnelssh="$4"
 
